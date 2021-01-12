@@ -1,0 +1,30 @@
+<div class="">
+    <form [formGroup]="addUserForm" (ngSubmit)="addUser()" class="row g-3 border">
+        <div class="col-1"></div>
+        <div class="col-5">
+            <label for="username" class="m-3">Username: </label>
+            <span class="error-message" *ngIf="addUserForm.get('username').touched && !addUserForm.get('username').valid">
+                    error: you have to insert a valid username
+                </span>
+            <input class="input" id="username" placeholder="username" formControlName="username">
+        </div>
+        <div class="col-5">
+            <label for="email" class="m-3">Email: </label>
+            <input class="input" id="email" placeholder="email" formControlName="email">
+        </div>
+
+        <div class="col-1"></div>
+        <div class="col-1"></div>
+
+        <div class="col-5">
+            <label for="password" class="m-3">Password: </label>
+            <span class="error-message" *ngIf="addUserForm.get('password').touched && !addUserForm.get('password').valid">
+                    error: you have to insert a valid password
+                </span>
+            <input type="password" id="password" placeholder="password" formControlName="password">
+        </div>
+
+        <button type="submit" [disabled]="!addUserForm.valid">Add User</button>
+    </form>
+</div>
+

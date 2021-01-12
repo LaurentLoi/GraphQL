@@ -1,0 +1,52 @@
+#QueryResovler => le type de donnée qui possèdent la déclaration des requêtes possibles
+type QueryResolver {
+    users: [User] #findAll
+    user(id: ID!): User #findOneById
+    books: [Book]
+    book(id: ID!): Book
+
+#
+#    books: [Book]
+#    book(id: ID!): Book
+}
+
+type MutationResolver {
+    newUser(user: UserInput!): User
+    newBook(book: BookInput!): Book
+    updateUser(id: ID!, t: BookAdd): User
+#    newBook(book: BookInput!): Book
+}
+
+#input correspond au DTO d'entré
+input BookInput {
+    title: String! #un point d'exclamation => Obligatoire
+    author: String!
+    ownerId: ID
+}
+
+input BookAdd {
+    userId: ID!
+    title: String!
+    author: String
+}
+
+#type User => correspond au dto de retour global
+type Book {
+    id: ID!
+    title: String!
+    author: String
+    owner: User
+}
+input UserInput {
+    username: String! #un point d'exclamation => Obligatoire
+    password: String!
+    email: String #email est optionnel
+}
+
+#type User => correspond au dto de retour global
+type User {
+    id: ID!
+    username: String!
+    email: String
+    books: [Book]
+}

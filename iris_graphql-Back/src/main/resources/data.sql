@@ -1,0 +1,2 @@
+-- INSERT INTO USER(created_at, is_active, updated_at, email, password,username) VALUES ('2021-01-11', true, '2021-01-11', 'flavian.ovyn@bstorm.be', 'Flavian', 'Flavian');
+-- INSERT INTO BOOK(title, author, ownerId) VALUES ('title1', 'author1', 1);

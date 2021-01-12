@@ -1,0 +1,34 @@
+<div class="">
+    <form [formGroup]="addBookForm" (ngSubmit)="addBook()" class="row g-3 border">
+        <div class="col-1"></div>
+        <div class="col-5">
+            <label for="title" class="m-3">Title: </label>
+            <span class="error-message" *ngIf="addBookForm.get('title').touched && !addBookForm.get('title').valid">
+                    error: you have to insert a valid title
+                </span>
+            <input class="input" id="title" placeholder="title" formControlName="title">
+        </div>
+        <div class="col-5">
+            <label for="author" class="m-3">Author: </label>
+            <span class="error-message" *ngIf="addBookForm.get('author').touched && !addBookForm.get('author').valid">
+                    error: you have to insert a valid author
+                </span>
+            <input class="input" id="author" placeholder="author" formControlName="author">
+        </div>
+
+        <div class="col-1"></div>
+        <div class="col-1"></div>
+
+        <div class="col-5">
+            <label for="owner" class="m-3">Owner: </label>
+            <span class="error-message" *ngIf="addBookForm.get('owner').touched && !addBookForm.get('owner').valid">
+                    error: you have to select a valid owner
+                </span>
+            <select id="owner" formControlName="owner">
+                <option value="" disabled>Select the owner</option>
+                <option *ngFor="let user of (users$ | async)" [value]="user.id">{{user.id}} - {{user.username}}</option>
+            </select>
+        </div>
+        <button type="submit" [disabled]="!addBookForm.valid">Add Book</button>
+    </form>
+</div>

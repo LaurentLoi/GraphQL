@@ -1,0 +1,13 @@
+<div *ngIf="(books$ | async) as books" class="container-fluid">
+    <div class="row">
+        <div class="card w-25 text-white bg-dark m-3" *ngFor="let book of books">
+            <h3>{{book.id}} - {{book.title}}</h3>
+            <div class="card-body">
+                <h5 class="card-title">Author: {{book.author}}</h5>
+                <p class="card-text">
+                    {{book.owner.id}} - {{book.owner.username}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
